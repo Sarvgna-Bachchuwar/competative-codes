@@ -1,0 +1,31 @@
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        head = current = None
+        carry = 0
+        while l1 != None or l2 != None or carry !=0:
+            new_node = ListNode(val=carry)
+            if l1 != None:
+                new_node.val += l1.val
+            if l2 != None:
+                new_node.val += l2.val
+                
+            if new_node.val >= 10:
+                new_node.val -= 10
+                carry = 1
+            else:
+                carry = 0
+                
+            if current == None:
+                head = current = new_node
+            else:
+                current.next = new_node
+                current = current.next
+                
+            if l1 != None:
+                l1 = l1.next
+            if l2 != None:
+                l2 = l2.next
+                
+        return head
+            
+        
