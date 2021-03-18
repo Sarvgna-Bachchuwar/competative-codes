@@ -1,0 +1,21 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        s = s[::-1]
+        pair = {
+            'I':1,
+            'V':5,
+            'X':10,
+            'L':50,
+            'C':100,
+            'D':500,
+            'M':1000
+        }
+        res = pair[s[0]]
+       
+        for i in range(0,len(s)):
+            if not i == len(s)-1:
+                if pair[s[i]] > pair[s[i+1]]:
+                    res-= pair[s[i+1]]  
+                else:
+                    res+=  pair[s[i+1]]   
+        return res
